@@ -44,8 +44,8 @@ export const LiveSimulationControls: React.FC<LiveSimulationControlsProps> = ({
   const isOnline = status.isDeviceOnline;
 
   return (
-    <div className="fixed bottom-4 right-4 z-40 select-none">
-      <div className="bg-white/95 border border-slate-300 rounded-2xl shadow-xl backdrop-blur-md overflow-hidden transition-all duration-300 w-80 sm:w-96">
+    <div className="fixed bottom-3 right-3 left-3 sm:left-auto sm:right-4 z-40 select-none flex justify-end">
+      <div className="bg-white/95 border border-slate-300 rounded-2xl shadow-xl backdrop-blur-md overflow-hidden transition-all duration-300 w-full sm:w-96">
         {/* Toggle Bar */}
         <div
           onClick={() => setCollapsed(!collapsed)}

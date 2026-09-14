@@ -74,36 +74,37 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
   };
 
   return (
-    <header className="h-16 bg-white border-b border-slate-200 px-4 md:px-6 flex items-center justify-between sticky top-0 z-20 shadow-sm select-none">
+    <header className="h-16 bg-white border-b border-slate-200 px-3 sm:px-4 md:px-6 flex items-center justify-between sticky top-0 z-20 shadow-sm select-none">
       {/* Left: Mobile hamburger & BMC identifier metadata */}
-      <div className="flex items-center gap-3 md:gap-5">
+      <div className="flex items-center gap-2 sm:gap-3 md:gap-5 min-w-0">
         <button
           onClick={onToggleSidebar}
-          className="md:hidden p-2 rounded-lg bg-slate-100 border border-slate-200 text-slate-700 hover:text-slate-900"
+          aria-label="Toggle navigation menu"
+          className="md:hidden p-2 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 hover:text-slate-900 shrink-0 transition-colors"
         >
           <Menu className="w-5 h-5" />
         </button>
 
-        <div className="flex items-center gap-3">
-          <div className="hidden sm:flex flex-col">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+          <div className="hidden lg:flex flex-col">
             <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold">
               BMC Center
             </span>
-            <span className="text-xs font-bold text-slate-900 tracking-wide">
+            <span className="text-xs font-bold text-slate-900 tracking-wide truncate max-w-[140px]">
               {bmcInfo.centerName}
             </span>
           </div>
 
-          <div className="h-6 w-[1px] bg-slate-200 hidden sm:block" />
+          <div className="h-6 w-[1px] bg-slate-200 hidden lg:block" />
 
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono px-2.5 py-1 rounded bg-slate-100 border border-slate-200 text-slate-800 font-bold shadow-xs">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className="text-[10px] sm:text-[11px] font-mono px-2 sm:px-2.5 py-0.5 sm:py-1 rounded bg-slate-100 border border-slate-200 text-slate-800 font-bold shadow-xs shrink-0">
               {bmcInfo.id}
             </span>
 
             {/* Dynamic Status Pill in Header: GREEN when ON, RED when OFF */}
             <span
-              className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1.5 border transition-all ${
+              className={`text-[10px] sm:text-[11px] font-bold px-2 sm:px-2.5 py-0.5 rounded-full flex items-center gap-1 sm:gap-1.5 border transition-all shrink-0 ${
                 isRunning
                   ? 'bg-emerald-50 text-emerald-700 border-emerald-300 shadow-sm'
                   : 'bg-rose-50 text-rose-700 border-rose-300 shadow-sm'
@@ -112,14 +113,14 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
               {isRunning ? (
                 <>
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <Zap className="w-3 h-3 text-emerald-600 fill-emerald-500" />
-                  <span>RUNNING (ON)</span>
+                  <Zap className="w-3 h-3 text-emerald-600 fill-emerald-500 hidden xs:inline" />
+                  <span>ON</span>
                 </>
               ) : (
                 <>
                   <span className="w-2 h-2 rounded-full bg-rose-500"></span>
-                  <PowerOff className="w-3 h-3 text-rose-600" />
-                  <span>STOPPED (OFF)</span>
+                  <PowerOff className="w-3 h-3 text-rose-600 hidden xs:inline" />
+                  <span>OFF</span>
                 </>
               )}
             </span>
@@ -128,9 +129,9 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
       </div>
 
       {/* Right: Live Connection, Clock/Date, Alerts, Settings, Profile */}
-      <div className="flex items-center gap-2 md:gap-4">
+      <div className="flex items-center gap-1.5 sm:gap-2 md:gap-4 shrink-0">
         {/* Real-time Connection status indicator */}
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200">
+        <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-slate-50 border border-slate-200">
           {status.isDeviceOnline ? (
             <div className="flex items-center gap-2">
               <span className="relative flex h-2.5 w-2.5">

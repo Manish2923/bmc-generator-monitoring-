@@ -90,10 +90,10 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       </div>
 
       {/* Date Range Selector Pill Buttons */}
-      <div className="flex items-center gap-1.5 p-1 bg-white rounded-lg border border-slate-300 self-start md:self-auto shadow-xs">
+      <div className="flex items-center gap-1.5 p-1 bg-white rounded-lg border border-slate-300 overflow-x-auto max-w-full shadow-xs scrollbar-none">
         <button
           onClick={() => handleSelectPreset('today')}
-          className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+          className={`px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all ${
             filter.type === 'today'
               ? 'bg-slate-900 text-white shadow-sm'
               : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
@@ -103,7 +103,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
         </button>
         <button
           onClick={() => handleSelectPreset('7days')}
-          className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+          className={`px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all ${
             filter.type === '7days'
               ? 'bg-slate-900 text-white shadow-sm'
               : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
@@ -113,7 +113,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
         </button>
         <button
           onClick={() => handleSelectPreset('30days')}
-          className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+          className={`px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all ${
             filter.type === '30days'
               ? 'bg-slate-900 text-white shadow-sm'
               : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
@@ -123,7 +123,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
         </button>
         <button
           onClick={() => handleSelectPreset('custom')}
-          className={`px-3 py-1.5 rounded-md text-xs font-semibold flex items-center gap-1.5 transition-all ${
+          className={`px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap flex items-center gap-1.5 transition-all ${
             filter.type === 'custom'
               ? 'bg-slate-900 text-white shadow-sm'
               : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'

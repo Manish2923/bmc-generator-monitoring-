@@ -9,6 +9,7 @@ import { generatorService } from './services/mockGeneratorService';
 
 export function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarMobileOpen, setSidebarMobileOpen] = useState(false);
   const activeRoute = 'generator-monitoring';
 
   // Shared Header Data
@@ -76,7 +77,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex overflow-x-hidden">
       {/* 1. Industrial Left Sidebar - Exclusive to Generator Monitoring */}
       <Sidebar
         collapsed={sidebarCollapsed}
@@ -84,11 +85,13 @@ export function App() {
         activeRoute={activeRoute}
         onRouteChange={() => {}}
         bmcId={bmcInfo.id}
+        mobileOpen={sidebarMobileOpen}
+        onCloseMobile={() => setSidebarMobileOpen(false)}
       />
 
       {/* 2. Main Viewport */}
       <div
-        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${
+        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 w-full ${
           sidebarCollapsed ? 'md:ml-20' : 'md:ml-64'
         }`}
       >
@@ -97,13 +100,13 @@ export function App() {
           bmcInfo={bmcInfo}
           status={status}
           alerts={alerts}
-          onToggleSidebar={() => setSidebarCollapsed(!sidebarCollapsed)}
+          onToggleSidebar={() => setSidebarMobileOpen(!sidebarMobileOpen)}
           onOpenAlerts={() => setIsAlertsOpen(true)}
           onOpenSettings={() => setIsSettingsOpen(true)}
         />
 
         {/* Content Area - Dedicated Generator Monitoring */}
-        <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto">
+        <main className="flex-1 p-3 sm:p-5 md:p-6 lg:p-8 overflow-y-auto w-full max-w-full">
           <GeneratorMonitoringView
             bmcInfo={bmcInfo}
             onOpenSettingsDirect={() => setIsSettingsOpen(true)}
@@ -134,3 +137,4 @@ export function App() {
 }
 
 export default App;
+
