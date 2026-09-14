@@ -162,14 +162,14 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
           )}
         </div>
 
-        {/* Live Clock and Date */}
-        <div className="hidden lg:flex items-center gap-3 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200">
-          <div className="flex items-center gap-1.5 text-slate-800 font-mono text-xs">
-            <Clock className="w-3.5 h-3.5 text-slate-600" />
-            <span className="font-bold text-slate-900 tracking-wide tabular-nums">{currentTime}</span>
+        {/* Live Clock and Date - Always visible on mobile */}
+        <div className="flex items-center gap-1.5 sm:gap-3 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-slate-50 border border-slate-200 shadow-2xs">
+          <div className="flex items-center gap-1 text-slate-800 font-mono text-[11px] sm:text-xs">
+            <Clock className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-slate-600" />
+            <span className="font-bold text-slate-900 tracking-tight tabular-nums">{currentTime}</span>
           </div>
-          <div className="h-3.5 w-[1px] bg-slate-200" />
-          <div className="flex items-center gap-1.5 text-slate-500 text-xs">
+          <div className="h-3.5 w-[1px] bg-slate-200 hidden lg:block" />
+          <div className="hidden lg:flex items-center gap-1.5 text-slate-500 text-xs">
             <Calendar className="w-3.5 h-3.5 text-slate-500" />
             <span className="text-slate-700 font-medium">{currentDate}</span>
           </div>
